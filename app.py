@@ -131,7 +131,7 @@ def run_test():
                     'successful_actions': passed_count,
                     'failed_actions': failed_count,
                     'success_percentage': round(success_rate, 2),
-                    'execution_duration': f\"{execution_time}s\",
+                    'execution_duration': f"{execution_time}s",
                     'browser_used': results.get('browser', browser_type),
                     'target_url': results.get('url', target_url)
                 }
