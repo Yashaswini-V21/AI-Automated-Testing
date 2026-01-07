@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logs Viewer</title>
+    <style>
+        .page-transition {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+
+        .page-transition.active {
+            opacity: 1;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+
+            color: aqua;
+            transform: scale(1.15);
+            transition: 0.6s ease;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .log-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .log-container2 {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .log-entry {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page" class="page-transition">
+        <header>
+            <nav>
+                <a href="/">Home</a>
+            </nav>
+        </header>
+        <h1>Testing Logs</h1>
+        <div class="log-container" id="logBox">
+            Loading logs...
+        </div>
+
+        <h1>Playwright Logs</h1>
+        <div class="log-container2" id="playwright">
+        </div>
+    </div>
+
+    <script>
+        async function loadLogs() {
+            try {
+                const response = await fetch('/logs/logs.json');
+                const data = await response.json();
+
+                const logBox = document.getElementById('logBox');
+                logBox.innerHTML = '';
+
+
+                if (!Array.isArray(data) || data.length === 0) {
+                    logBox.innerHTML = '<p>No logs found.</p>';
+                    return;
+                }
+
+                data.forEach(log => {
+                    const div = document.createElement('div');
+                    div.classList.add('log-entry');
+                    div.textContent = `[${log.timestamp}] ${log.entry}`;
+                    logBox.appendChild(div);
+                });
+
+            } catch (error) {
+                console.error('Error loading logs:', error);
+                document.getElementById('logBox').innerHTML = '<p>Error loading logs.</p>';
+            }
+        }
+
+
+        //bootstrap
+
+        loadLogs();
+
+
+        //animation
+        document.addEventListener("DOMContentLoaded", () => {
+            const page = document.getElementById("page");
+
+            // Fade in when page loads
+            requestAnimationFrame(() => {
+                page.classList.add("active");
+            });
+
+            // Fade out when clicking nav links
+            document.querySelectorAll("a").forEach(link => {
+                link.addEventListener("click", e => {
+                    const href = link.getAttribute("href");
+
+                    // skip anchors, empty hrefs, JS links
+                    if (!href || href.startsWith("#") || link.hasAttribute("download"))
+                        return;
+
+                    e.preventDefault(); // stop immediate routing
+
+                    page.classList.remove("active"); // fade out
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 350); // delay so fade-out completes
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

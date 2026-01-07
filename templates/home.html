@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automated E2E Testing</title>
+    <style>
+        .page-transition {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+
+        .page-transition.active {
+            opacity: 1;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/bg1.png') }}");
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+
+        h1 {
+            margin-bottom: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+
+        }
+
+        .btn-container {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 40px;
+            padding-right: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            background: #333;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            background: cyan;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page" class="page-transition">
+        <h1 style="color: aquamarine; font-size: xx-large; ">Automated E2E Testing</h1>
+
+        <div class="btn-container">
+            <button id="test">Run Test</button>
+            <button id="logs">Logs</button>
+            <button id="settings">Settings</button>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById("test").addEventListener('click', function () {
+        window.location.href = '/main';
+    });
+    document.getElementById("logs").addEventListener('click', function () {
+        window.location.href = '/logs';
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const page = document.getElementById("page");
+
+        // Fade in when page loads
+        requestAnimationFrame(() => {
+            page.classList.add("active");
+        });
+
+        // Fade out when clicking nav links
+        document.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", e => {
+                const href = link.getAttribute("href");
+
+                // skip anchors, empty hrefs, JS links
+                if (!href || href.startsWith("#") || link.hasAttribute("download"))
+                    return;
+
+                e.preventDefault(); // stop immediate routing
+
+                page.classList.remove("active"); // fade out
+
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 350); // delay so fade-out completes
+            });
+        });
+    });
+</script>
+
+</html>

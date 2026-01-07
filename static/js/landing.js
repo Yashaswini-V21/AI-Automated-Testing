@@ -1,4 +1,4 @@
-// Yash AI Agent - Landing Page JavaScript
+// QA-Pilot Agent - Landing Page JavaScript
 
 // Particle animation
 function createParticles() {
@@ -49,10 +49,34 @@ document.head.appendChild(style);
 
 // Smooth scroll function
 function scrollToDemo() {
-    const featuresSection = document.getElementById('features');
-    if (featuresSection) {
-        featuresSection.scrollIntoView({ behavior: 'smooth' });
+    const demoSection = document.getElementById('demo');
+    if (demoSection) {
+        demoSection.scrollIntoView({ behavior: 'smooth' });
     }
+}
+
+// Demo tab switching
+function switchDemoTab(tabId) {
+    // Hide all tab contents
+    document.querySelectorAll('.demo-tab-content').forEach(content => {
+        content.style.display = 'none';
+    });
+    
+    // Remove active class from all buttons
+    document.querySelectorAll('.demo-tab-btn').forEach(btn => {
+        btn.style.background = 'rgba(255,255,255,0.1)';
+        btn.style.border = '1px solid rgba(255,255,255,0.2)';
+    });
+    
+    // Show selected tab content
+    const selectedTab = document.getElementById(tabId);
+    if (selectedTab) {
+        selectedTab.style.display = 'block';
+    }
+    
+    // Highlight active button
+    event.target.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+    event.target.style.border = 'none';
 }
 
 // Intersection Observer for animations
@@ -118,5 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
 });
 
-// Make scrollToDemo globally available
+// Make functions globally available
 window.scrollToDemo = scrollToDemo;
+window.switchDemoTab = switchDemoTab;

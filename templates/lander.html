@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>LLM Interface</h1>
+
+
+    <form action="/run" method="POST">
+        <input type="text" name="instruction">
+        <button type="submit">Execute</button>
+
+    </form> 
+
+    <a href="/">Back to Home</a>
+
+
+    {% if output %}
+        <h3>Result:</h3>
+        <pre>{{ output }}</pre>
+    {% endif %}
+</body>
+
+</html>

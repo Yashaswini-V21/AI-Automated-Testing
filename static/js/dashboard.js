@@ -1,4 +1,4 @@
-// Yash AI Agent - Dashboard JavaScript
+// QA-Pilot Agent - Dashboard JavaScript
 
 // Example test templates
 const examples = {

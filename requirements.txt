@@ -1,4 +1,4 @@
-lask==3.0.0
+Flask==3.0.0
 flask-cors==4.0.0
 playwright==1.40.0
 langgraph==0.2.27
@@ -9,3 +9,4 @@ python-dotenv==1.0.0
 requests==2.31.0
 google-generativeai==0.3.2
 fpdf2==2.8.5
+colorama==0.4.6

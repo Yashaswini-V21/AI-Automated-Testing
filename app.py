@@ -11,6 +11,8 @@ from agent.workflow import TestAgentWorkflow
 from agent.simple_parser import SimpleParser
 from agent.code_generator import CodeGenerator
 from agent.executor import TestExecutor
+from agent.recording_manager import get_recording_manager
+from agent.report_analyzer import get_report_analyzer
 import json
 from datetime import datetime
 from fpdf import FPDF
@@ -103,11 +105,6 @@ def run_test():
             
             print(f"[API] Results - Total: {total_steps}, Passed: {passed_count}, Failed: {failed_count}")
             
-            # Enhanced reporting with execution metrics
-            execution_time = results.get('execution_time', 0)
-            start_time = results.get('start_time', datetime.now().isoformat())
-            end_time = results.get('end_time', datetime.now().isoformat())
-            
             result = {
                 'success': True,
                 'url': target_url,
@@ -117,24 +114,12 @@ def run_test():
                 'total_steps': total_steps,
                 'passed': passed_count,
                 'failed': failed_count,
-                'success_rate': round(success_rate, 2),
-                'execution_time': execution_time,
-                'start_time': start_time,
-                'end_time': end_time,
+                'success_rate': success_rate,
                 'passed_tests': passed,
                 'failed_tests': failed,
                 'generated_code': code,
                 'execution_status': 'completed',
-                'screenshots': results.get('screenshots', []),
-                'report_summary': {
-                    'total_actions': total_steps,
-                    'successful_actions': passed_count,
-                    'failed_actions': failed_count,
-                    'success_percentage': round(success_rate, 2),
-                    'execution_duration': f"{execution_time}s",
-                    'browser_used': results.get('browser', browser_type),
-                    'target_url': results.get('url', target_url)
-                }
+                'screenshots': results.get('screenshots', [])
             }
         else:
             result = {
@@ -232,7 +217,7 @@ def export_pdf():
         
         # Title
         pdf.set_font('Arial', 'B', 20)
-        pdf.cell(0, 10, 'Yash AI Agent - Test Report', 0, 1, 'C')
+        pdf.cell(0, 10, 'QA-Pilot Agent - Test Report', 0, 1, 'C')
         pdf.ln(5)
         
         # Timestamp
@@ -379,12 +364,222 @@ def export_pdf():
             'error': str(e)
         }), 500
 
+# ============================================================================
+# API ENDPOINTS FOR RECORDINGS AND ANALYZER
+# ============================================================================
+
+@app.route('/api/recordings', methods=['GET'])
+def list_recordings():
+    """List all recordings"""
+    try:
+        manager = get_recording_manager()
+        recordings = manager.list_recordings()
+        return jsonify({
+            'success': True,
+            'data': recordings
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/recordings/<recording_id>', methods=['GET'])
+def get_recording(recording_id):
+    """Get specific recording"""
+    try:
+        manager = get_recording_manager()
+        recording = manager.get_recording(recording_id)
+        
+        if recording:
+            return jsonify({
+                'success': True,
+                'data': recording
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'Recording not found'
+            }), 404
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/recordings/<recording_id>/download', methods=['GET'])
+def download_recording(recording_id):
+    """Download recording as JSON"""
+    try:
+        manager = get_recording_manager()
+        recording = manager.get_recording(recording_id)
+        
+        if not recording:
+            return jsonify({
+                'success': False,
+                'error': 'Recording not found'
+            }), 404
+        
+        # Create JSON file
+        json_data = json.dumps(recording, indent=2)
+        json_bytes = io.BytesIO(json_data.encode('utf-8'))
+        
+        return send_file(
+            json_bytes,
+            mimetype='application/json',
+            as_attachment=True,
+            download_name=f"{recording_id}.json"
+        )
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/recordings/<recording_id>', methods=['DELETE'])
+def delete_recording(recording_id):
+    """Delete a recording"""
+    try:
+        manager = get_recording_manager()
+        success = manager.delete_recording(recording_id)
+        
+        if success:
+            return jsonify({
+                'success': True,
+                'message': 'Recording deleted'
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'Recording not found'
+            }), 404
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/analyzer/generate', methods=['POST'])
+def generate_analysis_report():
+    """Generate comprehensive analysis report"""
+    try:
+        data = request.get_json()
+        include_recording = data.get('include_recording', False)
+        
+        # Prepare test data
+        test_data = {
+            'url': data.get('url'),
+            'instruction': data.get('instruction'),
+            'stats': data.get('stats', {}),
+            'steps': data.get('steps', []),
+            'screenshots': data.get('screenshots', []),
+            'recording_id': data.get('recording_id'),
+            'recording_duration': data.get('recording_duration'),
+            'event_count': data.get('event_count'),
+            'recording_status': data.get('recording_status')
+        }
+        
+        analyzer = get_report_analyzer()
+        report_paths = analyzer.generate_comprehensive_report(test_data, include_recording)
+        
+        return jsonify({
+            'success': True,
+            'data': report_paths
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/analyzer/reports', methods=['GET'])
+def list_analysis_reports():
+    """List all generated reports"""
+    try:
+        reports_dir = 'reports'
+        os.makedirs(reports_dir, exist_ok=True)
+        
+        reports = []
+        for filename in os.listdir(reports_dir):
+            if filename.startswith('report_'):
+                filepath = os.path.join(reports_dir, filename)
+                stat = os.stat(filepath)
+                
+                report_id = filename.split('.')[0]
+                file_ext = filename.split('.')[-1]
+                
+                reports.append({
+                    'report_id': report_id,
+                    'filename': filename,
+                    'format': file_ext,
+                    'size': stat.st_size,
+                    'created': datetime.fromtimestamp(stat.st_ctime).isoformat()
+                })
+        
+        # Group by report_id
+        grouped = {}
+        for report in reports:
+            rid = report['report_id']
+            if rid not in grouped:
+                grouped[rid] = {
+                    'report_id': rid,
+                    'created': report['created'],
+                    'formats': {}
+                }
+            grouped[rid]['formats'][report['format']] = {
+                'filename': report['filename'],
+                'size': report['size']
+            }
+        
+        return jsonify({
+            'success': True,
+            'data': list(grouped.values())
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/analyzer/download/<report_id>/<format>', methods=['GET'])
+def download_analysis_report(report_id, format):
+    """Download specific report format"""
+    try:
+        filename = f"{report_id}.{format}"
+        filepath = os.path.join('reports', filename)
+        
+        if not os.path.exists(filepath):
+            return jsonify({
+                'success': False,
+                'error': 'Report not found'
+            }), 404
+        
+        mimetype_map = {
+            'pdf': 'application/pdf',
+            'html': 'text/html',
+            'json': 'application/json'
+        }
+        
+        return send_file(
+            filepath,
+            mimetype=mimetype_map.get(format, 'application/octet-stream'),
+            as_attachment=True,
+            download_name=filename
+        )
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
 if __name__ == '__main__':
     # Create necessary directories
     os.makedirs('reports', exist_ok=True)
+    os.makedirs('recordings', exist_ok=True)
     os.makedirs('static/images', exist_ok=True)
+    os.makedirs('static/screenshots', exist_ok=True)
     
-    print("[*] Yash AI Agent Starting...")
+    print("[*] QA-Pilot Agent Starting...")
     print("[*] Access the application at: http://localhost:5000")
     print("[*] Sample test site available at: http://localhost:5000/test_site")
     

@@ -1,0 +1,53 @@
+{
+  "id": "rec_1767801714_24",
+  "test_name": "Demo Test - E-commerce Navigation",
+  "url": "https://demo.playwright.dev/todomvc",
+  "instruction": "Test adding and completing todo items",
+  "start_time": "2026-01-07T21:31:54.325782",
+  "end_time": "2026-01-07T21:31:56.352098",
+  "duration": 2.026316,
+  "status": "completed",
+  "events": [
+    {
+      "timestamp": "2026-01-07T21:31:54.829927",
+      "type": "navigation",
+      "description": "Navigate to https://demo.playwright.dev/todomvc",
+      "data": {
+        "method": "goto",
+        "success": true
+      },
+      "screenshot_id": null
+    },
+    {
+      "timestamp": "2026-01-07T21:31:55.338236",
+      "type": "action",
+      "description": "Type 'Buy groceries' in input.new-todo",
+      "data": {
+        "text": "Buy groceries",
+        "success": true
+      },
+      "screenshot_id": null
+    },
+    {
+      "timestamp": "2026-01-07T21:31:55.843038",
+      "type": "action",
+      "description": "Press Enter on input.new-todo",
+      "data": {
+        "key": "Enter",
+        "success": true
+      },
+      "screenshot_id": null
+    },
+    {
+      "timestamp": "2026-01-07T21:31:56.349639",
+      "type": "action",
+      "description": "Click checkbox at .todo-list li .toggle",
+      "data": {
+        "success": true
+      },
+      "screenshot_id": null
+    }
+  ],
+  "screenshots": [],
+  "metadata": {}
+}

@@ -1,161 +1,164 @@
-# 🚀 Quick Start Guide - Yash AI Agent
+# 🚀 QA-Pilot Agent - Quick Start Guide
 
-## Installation
-
-Run the setup script to install all dependencies:
-
-```powershell
-.\setup.ps1
-```
-
-This will:
-- Install Python dependencies
-- Install Playwright browsers
-- Create .env configuration file
-
-## Manual Installation (Alternative)
-
-If you prefer manual installation:
-
-```powershell
-# Install Python dependencies
-pip install -r requirements.txt
-
-# Install Playwright browsers
-playwright install chromium
-```
-
-## Running the Application
-
-Start the Flask server:
-
-```powershell
-python app.py
-```
-
-The application will be available at:
-- Main Application: http://localhost:5000
-- Test Site: http://localhost:5000/test_site
-- Dashboard: http://localhost:5000/dashboard
-
-## Using the AI Agent
-
-1. **Open the Dashboard** - Navigate to http://localhost:5000
-2. **Wait for Landing Page** - Enjoy the 5-second animated intro with the Yash AI Agent logo
-3. **Click "Start Testing Now"** to access the dashboard
-4. **Enter Test Instructions** in natural language, for example:
-   ```
-   Navigate to http://localhost:5000/test_site
-   Fill the email field with "test@example.com"
-   Fill the password field with "password123"
-   Click the "Login" button
-   Verify that the page contains "Login successful"
-   ```
-5. **Click "Run Test"** and watch the AI agent work!
-6. **View Results** - See detailed pass/fail status and generated Playwright code
-
-## Example Test Instructions
-
-### Login Test
-```
-Navigate to http://localhost:5000/test_site
-Fill the email field with "test@example.com"
-Fill the password field with "password123"
-Click the Login button
-Check that the page contains "Login successful"
-```
-
-### Form Submission Test
-```
-Navigate to http://localhost:5000/test_site
-Fill the name field with "John Doe"
-Fill the email field with "john@example.com"
-Click the submit button
-Verify success message appears
-```
-
-### Navigation Test
-```
-Navigate to http://localhost:5000/test_site
-Click on the About link
-Wait 2 seconds
-Click on the Home link
-```
-
-## Features
-
-✅ Natural Language Processing - Write tests in plain English
-✅ AI-Powered Code Generation - Automatic Playwright script creation
-✅ Real-time Execution - See results instantly
-✅ Beautiful UI - Modern, animated interface
-✅ Detailed Reports - Pass/fail status with error details
-✅ Code Export - Copy generated Playwright code
-
-## API Endpoints
-
-- `POST /api/test` - Run a test
-- `GET /api/reports` - List all reports
-- `GET /api/reports/<id>` - Get specific report
-
-## Troubleshooting
-
-### Playwright Issues
-If Playwright fails to run:
-```powershell
-playwright install chromium --force
-```
-
-### Port Already in Use
-If port 5000 is busy, edit `app.py` and change the port:
-```python
-app.run(debug=True, port=5001, host='0.0.0.0')
-```
-
-### API Key Issues
-The system works without a Gemini API key using rule-based parsing. For better accuracy with complex tests, ensure your `.env` file has:
-```
-GEMINI_API_KEY=your_actual_key_here
-```
-
-## Tech Stack
-
-- **Backend**: Python, Flask, LangGraph
-- **Browser Automation**: Playwright
-- **AI**: Google Gemini, LangChain
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-
-## Project Structure
-
-```
-AI AGENT/
-├── app.py                  # Flask application
-├── agent/                  # AI Agent modules
-│   ├── __init__.py
-│   ├── parser.py          # Instruction parser
-│   ├── code_generator.py  # Playwright code generator
-│   ├── executor.py        # Test executor
-│   └── workflow.py        # LangGraph workflow
-├── static/                # Frontend assets
-│   ├── css/
-│   │   ├── landing.css
-│   │   └── dashboard.css
-│   └── js/
-│       ├── landing.js
-│       └── dashboard.js
-├── templates/             # HTML templates
-│   ├── index.html         # Landing page
-│   ├── dashboard.html     # Main dashboard
-│   └── test_site.html     # Sample test site
-├── reports/               # Generated test reports
-├── requirements.txt       # Python dependencies
-├── setup.ps1             # Installation script
-└── README.md             # Documentation
-```
-
-## Support
-
-For issues or questions, check the console output for detailed error messages.
+**Get started with automated browser testing in under 5 minutes!**
 
 ---
 
-**Created by Yash** | Powered by AI 🤖
+## ⚡ Quick Setup
+
+### 1. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+playwright install chromium
+```
+
+### 2. Start the Server
+
+```bash
+python app.py
+```
+
+### 3. Open Dashboard
+
+Visit: **http://localhost:5000**
+
+---
+
+## 🎯 Your First Test
+
+### Step 1: Open Agent Settings Tab
+- You'll see the configuration form by default
+
+### Step 2: Enter Test Instructions
+```
+Task: Go to youtube.com and search for 'AI tutorial'
+Browser: Google Chrome
+Mode: Headless
+Recording: Off
+```
+
+### Step 3: Run Test
+- Click **"▶️ Run Agent"**
+- Watch the 5-step process animation:
+  1. 🔍 Parsing instructions
+  2. 💻 Generating Playwright code
+  3. ✅ Validating code
+  4. 🚀 Executing test
+  5. 📊 Generating report
+
+### Step 4: View Results
+- Automatically switches to **Run Agent** tab
+- See test status (✅ Passed / ❌ Failed)
+- View execution steps with screenshots
+- Expand to see generated Playwright code
+- Download reports (JSON, PDF)
+
+---
+
+## 📝 Example Tests
+
+### Google Search
+```
+Go to google.com and search for 'Playwright'
+```
+
+### Amazon Product Search
+```
+Navigate to amazon.com, search for 'laptop', wait 3 seconds
+```
+
+### Form Filling
+```
+Go to example.com/form, fill name field with 'John', click submit
+```
+
+---
+
+## 🎨 Dashboard Features
+
+### Agent Settings Tab
+- Quick example buttons
+- Task description textarea
+- Browser, Mode, Recording dropdowns
+- Run Agent button
+
+### Run Agent Tab
+- Test execution results
+- Step-by-step breakdown
+- Generated Playwright code
+- Download buttons
+
+### Recordings Tab
+- View all recorded sessions
+- Download recordings as JSON
+- Event timeline with screenshots
+
+### Analyzer Tab  
+- Generate PDF/HTML/JSON reports
+- View available reports
+- Download any format
+
+### History Tab
+- View past test executions
+- Clear history
+
+---
+
+## 🔧 Configuration Options
+
+### Browsers
+- **Google Chrome** (chromium)
+- **Firefox**
+- **Microsoft Edge** (msedge)
+
+### Modes
+- **Visible** - See browser actions
+- **Headless** - Run in background (faster)
+
+### Recording
+- **On** - Capture session with screenshots
+- **Off** - Skip recording
+
+---
+
+## 💡 Tips for Success
+
+1. **Be Specific** - Use clear action words (click, type, search)
+2. **Add Waits** - Include "wait 2 seconds" for dynamic content
+3. **Use Recordings** - Enable recording for debugging
+4. **Check Code** - Review generated Playwright code
+5. **Export Reports** - Save results as PDF for documentation
+
+---
+
+## 🚨 Common Issues
+
+**Browser not found?**
+```bash
+playwright install chromium
+```
+
+**Port already in use?**
+- Close other applications using port 5000
+- Or change port in app.py
+
+**Test failing?**
+- Try visible mode to see what's happening
+- Add wait times for slow-loading pages
+- Check the generated Playwright code
+
+---
+
+## 📚 Next Steps
+
+- Read the full [README.md](README.md)
+- Explore the [API Endpoints](#api-endpoints)
+- Check [Project Structure](#project-structure)
+- Contribute on GitHub
+
+---
+
+**Made with ❤️ by Yashaswini**
+
+[⬆ Back to README](README.md)

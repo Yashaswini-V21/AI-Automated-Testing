@@ -1,291 +1,359 @@
-<<<<<<< HEAD
-# 🤖 AI Agent To Test Websites Automatically Using Natural Language
+<div align="center">
 
-**Yash AI Testing Agent - Intelligent Browser Automation Platform**
+# 🤖 QA-Pilot Agent
 
-An AI-powered browser automation platform that converts plain English instructions into automated web tests. No coding required - just describe what you want to test in natural language!
-=======
-# 🤖 AI-Powered Automated Website Testing Platform
+### *Intelligent Browser Automation Platform*
 
-**AI Agent for Intelligent Browser Automation - Natural Language to Test Scripts**
+[![Python 3.14](https://img.shields.io/badge/Python-3.14-blue.svg)](https://www.python.org/downloads/)
+[![Flask 3.0](https://img.shields.io/badge/Flask-3.0-green.svg)](https://flask.palletsprojects.com/)
+[![Playwright 1.40](https://img.shields.io/badge/Playwright-1.40-orange.svg)](https://playwright.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-An enterprise-grade AI-powered browser automation platform that converts plain English instructions into robust automated web tests. Built for developers, QA engineers, and non-technical users alike.
->>>>>>> Yashaswini-branch
----
+**Test websites automatically using natural language - No coding required!**
 
-## 🎯 Project Overview
-
-<<<<<<< HEAD
-This project enables anyone to perform automated browser testing without writing a single line of code. Simply type commands like "go to youtube.com and search for python tutorials" and watch the AI agent automatically control the browser, perform actions, and generate detailed test reports.
-
-### ✨ Key Features
-- 📊 **Professional Reports** - Export results as PDF or JSON
-- 📜 **Test History** - Track all previous test executions
-|-----------|-----------|
-| **Automation** | Playwright 1.40 |
-| **Frontend** | HTML5, CSS3, JavaScript |
-| **Parser** | Custom Rule-Based SimpleParser |
-| **Export** | fpdf2 for PDF generation |
-| **Architecture** | REST API with modular design |
-=======
-This platform revolutionizes web testing by allowing anyone to perform sophisticated browser automation without writing code. Powered by advanced natural language parsing, intelligent error handling, and comprehensive reporting - perfect for modern web testing workflows.
-
-### ✨ Key Features
-
-#### Core Capabilities
-- 🗣️ **Natural Language Processing** - Write test cases in plain English
-- 🌐 **Multi-Browser Support** - Chrome, Firefox, Edge, Brave, Opera, WebKit, Chromium
-- 👁️ **Flexible Execution Modes** - Visible mode for debugging, headless for CI/CD
-- 🧠 **Smart Parser** - Rule-based system with 10+ action types, no API dependencies
-- 💻 **Playwright Code Generation** - Creates reusable, production-ready Python scripts
-- 🔄 **Retry Logic** - Automatic retry with exponential backoff for failed actions
-- 🎯 **Adaptive DOM Mapping** - Intelligent element detection with multiple fallback strategies
-
-#### Milestone 4 Enhancements
-- ⏱️ **Execution Timing** - Precise start/end time tracking with duration metrics
-- 📊 **Advanced Reporting** - Comprehensive test reports with success rates and metrics
-- 🛡️ **Error Handling** - Enhanced error tracking with detailed context and recovery
-- 📈 **Progress Visualization** - Animated progress bars and real-time status updates
-- 🎨 **Polished UI** - Modern design with gradient effects and smooth animations
-- 📸 **Screenshot Capture** - Full-page screenshots at every critical step
-- 💾 **Test History** - Complete audit trail of all test executions
+[🚀 Quick Start](#-quick-start) • [✨ Features](#-key-features) • [📸 Screenshots](#-screenshots) • [🛠️ Installation](#%EF%B8%8F-installation) • [📚 Documentation](#-documentation)
 
 ---
 
-## 🏗️ Architecture & Technology Stack
+</div>
 
-### Technology Stack
-| Component | Technology | Version |
-|-----------|-----------|---------|
-| **Backend** | Python | 3.14 |
-| **Web Framework** | Flask | 3.0 |
-| **Automation** | Playwright | 1.40 |
-| **Frontend** | HTML5, CSS3, JavaScript ES6+ | - |
-| **Parser** | Custom SimpleParser (Rule-Based) | v1.0 |
-| **Reporting** | JSON + fpdf2 | - |
-| **Architecture** | REST API with Modular Design | - |
+## 📖 Overview
 
-### System Architecture
-┌─────────────────┐
-│   Dashboard UI  │  (Natural Language Input)
-└────────┬────────┘
-         │
-    ┌────┴────┐
-    │         │
-    ▼         ▼
-┌────────┐ ┌──────────────┐
-│Parser  │ │CodeGenerator │
-└────┬───┘ └──────┬───────┘
-     │            │
-     └─────┬──────┘
-           ▼
-    ┌──────────────┐
-    │  Executor    │  (Playwright)
-    └──────┬───────┘
-           │
-           ▼
-    ┌──────────────┐
-    │   Reports    │  (JSON/Screenshots)
-    └──────────────┘
-```
->>>>>>> Yashaswini-branch
+**QA-Pilot Agent** is a revolutionary AI-powered testing platform that converts plain English instructions into automated browser tests. Simply describe what you want to test, and watch the agent execute it flawlessly using Playwright automation.
+
+> **Example:** Type *"Go to youtube.com and search for 'AI tutorial'"* → The agent automatically navigates, interacts with elements, and generates a comprehensive test report!
+
+### 🎯 Why QA-Pilot Agent?
+
+- ⚡ **Zero Code** - No programming knowledge needed
+- 🎨 **Beautiful UI** - Modern dashboard with real-time process visualization
+- 🧠 **Smart Parsing** - Advanced natural language understanding
+- 📊 **Rich Reports** - PDF, HTML, and JSON export formats
+- 📹 **Session Recording** - Capture and replay test executions
+- 🌐 **Multi-Browser** - Chrome, Firefox, Edge support
 
 ---
 
-## 📦 Installation & Setup
+## ✨ Key Features
+
+### 🗣️ Natural Language Testing
+Write test cases in plain English. Our intelligent parser understands actions like:
+- Navigate, Go to, Open
+- Click, Type, Fill, Enter
+- Search, Select, Scroll
+- Wait, Check, Verify
+
+### 📹 Session Recording
+- Automatic event capture with timestamps
+- Screenshot collection at key moments
+- Downloadable JSON recordings
+- Complete test session playback
+
+### 📊 Multi-Format Reports
+Generate professional reports in multiple formats:
+- **PDF** - Beautiful formatted reports with branding
+- **HTML** - Interactive reports with charts
+- **JSON** - Machine-readable data for CI/CD
+
+### 🎨 Modern Dashboard
+- Real-time 5-step process animation
+- Live test execution monitoring
+- Beautiful gradient UI with smooth transitions
+- Responsive design for all devices
+
+### 🔧 Advanced Features
+- Multiple browser support (Chromium, Firefox, Edge)
+- Headless & visible execution modes
+- Full-page screenshot capture
+- Test history tracking
+- Quick example templates
+- One-click report downloads
+
+---
+
+## 📸 Screenshots
+
+### Landing Page
+> *Add your landing page screenshot here*
+
+![Landing Page](./screenshots/landing.png)
+
+### Agent Settings Tab
+> *Configure your test parameters*
+
+![Agent Settings](./screenshots/agent-settings.png)
+
+### Run Agent Tab - Results
+> *View execution steps and Playwright code*
+
+![Run Agent Results](./screenshots/run-agent-results.png)
+
+### Analyzer Tab
+> *Generate and download reports*
+
+![Analyzer](./screenshots/analyzer.png)
+
+---
+
+## 🛠️ Installation
 
 ### Prerequisites
-<<<<<<< HEAD
-- Python 3.8 or higher
-- Internet connection (for browser downloads)
+
+- **Python 3.8+** (Python 3.14 recommended)
+- **pip** package manager
+- **Git** for version control
+- Internet connection for browser downloads
 
 ### Step 1: Clone Repository
-```bash
-git clone <your-repo-url>
-cd "AI AGENT"
-=======
-- Python 3.8+ installed
-- pip (Python package manager)
-- Git
-- 4GB RAM minimum
-- Internet connection (for browser downloads)
 
-### Quick Start
-
-#### Step 1: Clone Repository
 ```bash
-git clone https://github.com/Yashaswini-V21/AI-Automated-Testing.git
-cd AI-Automated-Testing
->>>>>>> Yashaswini-branch
+git clone <your-repository-url>
+cd AI-Agent-for-Automated-Website-Testing
 ```
 
 ### Step 2: Install Dependencies
-```bash
+
+**Windows (PowerShell):**
+```powershell
+python -m pip install --upgrade pip
 pip install -r requirements.txt
+playwright install chromium
 ```
 
-<<<<<<< HEAD
-### Step 3: Install Browsers
+**Linux/Mac:**
 ```bash
-python -m playwright install chromium firefox msedge
-=======
-### Step 3: Install Playwright Browsers
+python3 -m pip install --upgrade pip
+pip3 install -r requirements.txt
+playwright install chromium
+```
+
+### Step 3: Set Up Environment (Optional)
+
+Create a `.env` file for API keys:
+```env
+GEMINI_API_KEY=your_api_key_here  # Optional - for enhanced parsing
+```
+
+### Step 4: Run the Application
+
 ```bash
-python -m playwright install chromium firefox webkit
->>>>>>> Yashaswini-branch
+python app.py
 ```
 
-### Step 4: Run Application
-```bash
-python run_production.py
-```
-
-
-
-<<<<<<< HEAD
-1. **Open Dashboard** - Click "Enter Dashboard" on landing page
-2. **Enter Test Description**:
-   ```
-   go to youtube.com and search for python tutorials
-   ```
-
-```
-# Navigation with search
-go to amazon.com and search for laptops
-# Google search
-```
-
-=======
-1. **Launch Dashboard** - Click "Enter Dashboard" from landing page
-2. **Write Test Instructions**:
-   ```
-   go to github.com and search for playwright python
-   ```
-3. **Configure Test**:
-   - Browser: Google Chrome
-   - Mode: Visible (for debugging) or Headless (for CI/CD)
-4. **Execute** - Click "Run Test" button
-5. **View Results** - Watch real-time execution with:
-   - Live progress bar
-   - Execution metrics
-   - Step-by-step breakdown
-   - Screenshot gallery
-
-### Example Test Commands
-
-#### Basic Navigation
-```
-go to github.com
-```
-
-#### E-commerce Testing
-```
-go to amazon.com and search for lenovo laptop and click the first product
-```
-
-#### Streaming Services
-```
-navigate to netflix.com and search for stranger things
-```
-
-#### Multi-Step Workflows
-```
-open youtube.com, search for AI tutorials, click first video, wait 3 seconds
-```
-
-### Supported Action Types (10+)
-- **Navigate**: `go to`, `open`, `visit`, `navigate to`
-- **Search**: `search for`, `type`, `enter`, `input`
-- **Click**: `click`, `press`, `select` (with positions: first, second, third, last)
-- **Fill**: `fill`, `enter text into`
-- **Hover**: `hover over`, `mouse over`
-- **Scroll**: `scroll`, `scroll down`, `scroll up`
-- **Wait**: `wait`, `pause`, `delay`
-- **Verify**: `verify`, `check`, `assert`
-- **Screenshot**: `take screenshot`, `capture`
-- **Refresh**: `refresh`, `reload`
+The application will start at: **http://localhost:5000**
 
 ---
 
-## 📊 Milestone 4: Reporting Features
+## 🚀 Quick Start
 
-### Comprehensive Test Reports
-Each test execution generates detailed reports with:
+### Running Your First Test
 
-#### Metrics Tracked
-- ⏱️ **Execution Time** - Precise start/end timestamps and duration
-- 📈 **Success Rate** - Percentage of passed vs failed steps
-- 🎯 **Step Breakdown** - Detailed pass/fail status for each action
-- 🌐 **Browser Info** - Browser type and configuration
-- 📸 **Visual Evidence** - Full-page screenshots at each step
-- ❌ **Error Details** - Error type, message, and context
+1. **Open the Dashboard**
+   - Navigate to `http://localhost:5000`
+   - Click **"Start Testing Now"** or **"Dashboard"**
 
-#### Report Export Formats
-- **JSON** - Structured data for CI/CD integration
-- **Visual Dashboard** - Real-time results with progress tracking
-- **Screenshots** - Organized gallery view with timestamps
+2. **Configure Test Settings** (Agent Settings Tab)
+   - Enter task description: *"Go to google.com and search for 'Playwright'"*
+   - Select browser: Chrome/Firefox/Edge
+   - Choose mode: Visible or Headless
+   - Enable/disable recording
 
-### Error Handling & Recovery
-- **Retry Logic** - Automatic retry for transient failures (3 attempts)
-- **Fallback Strategies** - Multiple selector patterns for element detection
-- **Graceful Degradation** - Continues execution when possible
-- **Detailed Logging** - Comprehensive error tracking with stack traces
+3. **Run the Test**
+   - Click **"▶️ Run Agent"**
+   - Watch the 5-step process animation
+   - Results automatically appear in **Run Agent** tab
 
->>>>>>> Yashaswini-branch
+4. **View Results**
+   - ✅ Test status (Passed/Failed)
+   - 📋 Execution steps with screenshots
+   - 💻 Generated Playwright code
+   - 📥 Download reports (PDF/HTML/JSON)
+
 ---
 
-## 📁 Project Structure
+## 📚 Documentation
+
+### Project Structure
 
 ```
-<<<<<<< HEAD
-AI AGENT/
-├── app.py                      # Main Flask application
-├── run_production.py           # Production server runner
-=======
-AI-Automated-Testing/
-├── app.py                      # Flask REST API endpoints
-├── run_production.py           # Production WSGI server
->>>>>>> Yashaswini-branch
-├── requirements.txt            # Python dependencies
-├── agent/
-│   ├── simple_parser.py        # Natural language parser
-│   ├── code_generator.py       # Playwright code generator
-│   └── executor.py             # Test executor
-├── templates/
-│   ├── index.html              # Landing page with robot animation
-│   └── dashboard_modern.html   # Main testing dashboard
-└── static/
-    ├── css/
-    │   └── landing.css         # Landing page styles
-    ├── js/
-    │   └── landing.js          # Landing page animations
-    └── screenshots/            # Test screenshots (auto-generated)
+├── 📁 agent/                    # Core agent modules
+│   ├── code_generator.py        # Playwright code generation
+│   ├── executor.py              # Test execution engine
+│   ├── parser.py                # Natural language parser
+│   ├── recording_manager.py    # Session recording
+│   └── report_analyzer.py      # Report generation
+├── 📁 static/                   # Frontend assets
+│   ├── css/                     # Stylesheets
+│   ├── js/                      # JavaScript files
+│   └── screenshots/             # Generated screenshots
+├── 📁 templates/                # HTML templates
+│   ├── dashboard_modern.html   # Main dashboard
+│   └── index.html              # Landing page
+├── 📁 reports/                  # Generated test reports
+├── 📁 recordings/               # Test session recordings
+├── 📄 app.py                    # Main Flask application
+├── 📄 requirements.txt          # Python dependencies
+├── 📄 QUICKSTART.md            # Quick start guide
+└── 📄 README.md                # This file
 ```
 
-## 📁 Project Structure
+### API Endpoints
 
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/` | GET | Landing page |
+| `/dashboard` | GET | Main dashboard |
+| `/api/test` | POST | Execute test |
+| `/api/recordings` | GET | List recordings |
+| `/api/recordings/<id>/download` | GET | Download recording |
+| `/api/analyzer/generate` | POST | Generate report |
+| `/api/analyzer/reports` | GET | List reports |
+| `/api/analyzer/download/<id>/<format>` | GET | Download report |
+| `/api/export/pdf` | POST | Export PDF report |
+
+---
+
+## 🎯 Usage Examples
+
+### Example 1: Google Search Test
 ```
-AI AGENT/
-├── app.py                  # Flask application
-├── agent/                  # AI Agent modules
-│   ├── __init__.py
-│   ├── parser.py          # Instruction parser
-│   ├── code_generator.py  # Playwright code generator
-│   ├── executor.py        # Test executor
-│   └── workflow.py        # LangGraph workflow
-├── static/                # Frontend assets
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── templates/             # HTML templates
-├── test_site/             # Sample test website
-└── reports/               # Generated test reports
+Task: Go to google.com and search for 'OpenAI'
+Browser: Chrome
+Mode: Visible
 ```
 
-## 🎨 Technology Stack
+### Example 2: E-commerce Navigation
+```
+Task: Navigate to amazon.com, search for 'laptop', wait 3 seconds
+Browser: Firefox
+Mode: Headless
+```
 
-- **Backend**: Python, Flask, LangGraph
-- **Browser Automation**: Playwright
-- **AI**: OpenAI GPT-4, LangChain
-- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
+### Example 3: Video Search
+```
+Task: Open youtube.com, type 'Python tutorial' in search box
+Browser: Edge
+Mode: Visible
+Recording: On
+```
 
+---
+
+## 🔧 Configuration
+
+### Browser Options
+- **chromium** - Google Chrome (default)
+- **firefox** - Mozilla Firefox
+- **msedge** - Microsoft Edge
+
+### Execution Modes
+- **Visible** - Watch browser actions in real-time
+- **Headless** - Run tests silently in background (faster)
+
+### Recording Options
+- **On** - Capture all events and screenshots
+- **Off** - Skip recording (faster execution)
+
+---
+
+## 📦 Dependencies
+
+Core libraries used in this project:
+
+```txt
+flask==3.0.0              # Web framework
+playwright==1.40.0        # Browser automation
+langchain==0.1.0          # AI parsing (optional)
+langgraph==0.2.27         # Workflow orchestration
+fpdf2==2.8.5              # PDF generation
+colorama==0.4.6           # Terminal colors
+python-dotenv==1.0.0      # Environment variables
+flask-cors==4.0.0         # CORS support
+```
+
+---
+
+## 🚦 Troubleshooting
+
+### Common Issues
+
+**Issue: Browser not found**
+```bash
+# Solution: Install browsers
+playwright install chromium firefox msedge
+```
+
+**Issue: Port 5000 already in use**
+```bash
+# Solution: Change port in app.py
+app.run(debug=True, port=8080, host='0.0.0.0')
+```
+
+**Issue: Module not found errors**
+```bash
+# Solution: Reinstall dependencies
+pip install -r requirements.txt --upgrade
+```
+
+---
+
+## 🌟 Features Roadmap
+
+- [x] Natural language parsing
+- [x] Multi-browser support
+- [x] Session recording
+- [x] Multi-format reports
+- [x] Process visualization
+- [ ] CI/CD integration
+- [ ] Parallel test execution
+- [ ] Test scheduling
+- [ ] Cloud deployment
+- [ ] API authentication
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👨‍💻 Author
+
+**Yashaswini**
+
+- GitHub: [@yashaswini](https://github.com/yashaswini)
+- Project: QA-Pilot Agent
+
+---
+
+## 🙏 Acknowledgments
+
+- [Playwright](https://playwright.dev/) - Browser automation framework
+- [Flask](https://flask.palletsprojects.com/) - Web framework
+- [LangChain](https://www.langchain.com/) - AI orchestration
+- [FPDF2](https://pyfpdf.github.io/fpdf2/) - PDF generation
+
+---
+
+<div align="center">
+
+### ⭐ Star this repository if you find it helpful!
+
+**Made with ❤️ by Yashaswini**
+
+[⬆ Back to Top](#-qa-pilot-agent)
+
+</div>
