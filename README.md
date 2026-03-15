@@ -334,7 +334,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Yashaswini**
 
-- GitHub: [@yashaswini](https://github.com/yashaswini)
+- GitHub: [@yashaswini](https://github.com/Yashaswini-V21)
 - Project: QA-Pilot Agent
 
 ---
